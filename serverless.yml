@@ -1,0 +1,16 @@
+service: torrent-tracker-ip-checker
+
+frameworkVersion: '>=1.1.0 <2.0.0'
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  endpointType: REGIONAL
+
+functions:
+  tracker:
+    handler: build/index.handler
+    events:
+      - http:
+          path: getIp
+          method: get

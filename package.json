@@ -1,0 +1,40 @@
+{
+  "name": "torrent-tracker-ip-checker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Akshay Patel <akshay.ap99@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-arrow-functions": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.0",
+    "clean-webpack-plugin": "^2.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "jest": "^24.8.0",
+    "lambda-local": "^1.5.1",
+    "prettier": "^1.13.7",
+    "serverless": "^1.42.2",
+    "webpack": "^4.12.2",
+    "webpack-cli": "^3.0.8",
+    "zip-webpack-plugin": "^3.0.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "deploy": "yarn build && serverless deploy --stage Prod --region eu-west-1  --aws-profile serverless",
+    "dev": "yarn build && serverless invoke local --function tracker --path local/data.json --aws-profile serverless",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch"
+  },
+  "dependencies": {
+    "regenerator-runtime": "^0.13.2"
+  }
+}
