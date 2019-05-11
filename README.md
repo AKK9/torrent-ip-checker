@@ -1,13 +1,41 @@
-# Torrent Tracker IP Checker
+# Torrent IP Checker
 
-A fake torrent tracker which returns your IP address as the failure message.
+A mock torrent tracker, in the form of a Lambda, which always replies a failure response but provides your IP address as the failure message.
 
-## Why?
+[Download the torrent here](https://www.google.com)
 
-Provides a way for you to validate that your VPN or proxy is masking your real IP address.
+## Overview
 
-## How?
+### How does it work?
 
-Add this torrent to your client and view the list of trackers. The error message for this tracker will tell you which IP address hit the tracker.
+Add this torrent to your BitTorrent client then view the list of trackers. The error message for this tracker will tell you which IP address hit the tracker.
 
-You'll likely need to manually reannounce whenever you change your VPN or proxy settings to see your updated IP address.
+### Why?
+
+This provides a way for you to validate that your VPN or proxy is masking your real IP address without having to rely on untrusted websites.
+
+### Why should I trust your torrent?
+
+You don't need to. This lambda can be built and deployed to your own AWS account. More info below.
+
+## Running locally
+
+### Dependencies
+
+- Yarn - https://yarnpkg.com/en/docs/install
+
+### Running locally
+
+First run `yarn`. This will fetch all of the necessary dependencies.
+
+`yarn test` will run the unit tests
+
+`yarn dev` Will execute the Lambda locally using mock data from `local/data.json`
+
+## Deploying
+
+This project uses the Serverless Framework to deploy the lambda to AWS.
+
+First, ensure you have an AWS Account with sufficient privileges for Serverless. Use this [Serverless Framework Credentials Guide](https://serverless.com/framework/docs/providers/aws/guide/credentials/) to help you set this up.
+
+Then run `yarn deploy` to build and deploy to your AWS account.

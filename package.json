@@ -1,10 +1,10 @@
 {
-  "name": "torrent-tracker-ip-checker",
+  "name": "torrent-ip-checker",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Akshay Patel <akshay.ap99@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
