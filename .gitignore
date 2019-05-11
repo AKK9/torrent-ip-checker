@@ -3,6 +3,6 @@
 *.iml
 node_modules
 yarn-error.log
-.build
+build
 .coverage
 .serverless
