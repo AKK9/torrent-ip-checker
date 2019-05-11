@@ -8,6 +8,6 @@ Provides a way for you to validate that your VPN or proxy is masking your real I
 
 ## How?
 
-Add this torrent to your client and view the list of trackers. The error message for this tracker will tell which IP address hit the tracker.
+Add this torrent to your client and view the list of trackers. The error message for this tracker will tell you which IP address hit the tracker.
 
 You'll likely need to manually reannounce whenever you change your VPN or proxy settings to see your updated IP address.
