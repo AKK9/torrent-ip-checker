@@ -12,11 +12,11 @@ This allows you validate your VPN or proxy is functioning as expected and maskin
 
 ### How does it work?
 
-This Torrent contains a single tracker. The tracker returns a failure response to any request but includes your IP address as part of the failure reason.
+This Torrent contains a single HTTP tracker. The tracker returns a failure response to any request but includes your IP address as part of the failure reason.
 
-Most BitTorrent clients should allow you to see this message.
+To update the IP address you just have to reannounce to the tracker. Your BitTorrent client should allow you to do this. For example, in qBittorrent you just right click the torrent and select `Force reannounce`.
 
-QBitTorrent screenshot:
+Here's a screenshot from qBittorrent:
 ![alt text](images/screenshot.png)
 
 ## Local development
