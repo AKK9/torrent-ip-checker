@@ -16,7 +16,7 @@ This Torrent contains a single HTTP tracker. The tracker returns a failure respo
 
 To update the IP address you just have to reannounce to the tracker. Your BitTorrent client should allow you to do this. For example, in qBittorrent you just right click the torrent and select `Force reannounce`.
 
-Here's a screenshot from qBittorrent:
+**Here's a screenshot from qBittorrent:**
 ![alt text](images/screenshot.png)
 
 ## Local development
