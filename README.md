@@ -37,8 +37,6 @@ First run `yarn`. This will fetch all of the necessary dependencies.
 
 This project uses the [Serverless Framework](https://serverless.com/) to define serverless resources and deploy the Lambda function.
 
-It's defined as a project dependency and will be installed via `yarn`. However, installing it globally will make it easier to invoke `serverless` from the command line. Run `yarn global add serverless` to install globally.
+Use this [Serverless Framework Credentials Guide](https://serverless.com/framework/docs/providers/aws/guide/credentials/) to help you set up AWS credentials. If you need to run `serverless` on the command line install it globally first: `yarn global add serverless`.
 
-First, ensure you have an AWS Account with sufficient privileges for Serverless. Use this [Serverless Framework Credentials Guide](https://serverless.com/framework/docs/providers/aws/guide/credentials/) to help you set this up.
-
-Then run `yarn deploy` to build and deploy the Lambda to your AWS account.
+Once you've set up credentials run `yarn deploy` to build and deploy the Lambda to your AWS account.
