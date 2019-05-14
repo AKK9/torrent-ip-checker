@@ -23,7 +23,6 @@ describe('trackerHandler', () => {
 
   it('should return 500 response if bad event is provided', async () => {
     const response = await trackerHandler({})
-
     expect(response.statusCode).toBe(500)
   })
 })
@@ -54,5 +53,10 @@ describe('torrentHandler', () => {
     expect(value).toBe(
       'd8:announce32:https://123.abc.com/Prod/tracker4:infod6:lengthi16000e4:name10:IP Checker12:piece lengthi16000e6:piecesdeee'
     )
+  })
+
+  it('should return 500 response if bad event is provided', async () => {
+    const response = await trackerHandler({})
+    expect(response.statusCode).toBe(500)
   })
 })
