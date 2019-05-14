@@ -6,11 +6,20 @@ provider:
   name: aws
   runtime: nodejs8.10
   endpointType: REGIONAL
+  apiGateway:
+    binaryMediaTypes:
+      - '*/*'
 
 functions:
   tracker:
-    handler: build/index.handler
+    handler: build/index.trackerHandler
     events:
       - http:
-          path: getIp
+          path: tracker
+          method: get
+  torrent:
+    handler: build/index.torrentHandler
+    events:
+      - http:
+          path: torrent
           method: get

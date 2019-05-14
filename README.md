@@ -1,18 +1,23 @@
 # Torrent IP Checker
 
-A mock torrent tracker, in the form of a Lambda, which always replies a failure response but provides your IP address as the failure message.
+A fake Torrent which allows you to see your IP address.
 
-[Download the torrent here](https://www.google.com)
+[Download the Torrent here](https://8nhcsz7rj5.execute-api.eu-west-1.amazonaws.com/Prod/torrent)
 
 ## Overview
 
-### How does it work?
-
-Add this torrent to your BitTorrent client then view the list of trackers. The error message for this tracker will tell you which IP address hit the tracker.
-
 ### Why?
 
-This provides a way for you to validate that your VPN or proxy is masking your real IP address.
+This allows you validate your VPN or proxy is functioning as expected and masking your real IP address.
+
+### How does it work?
+
+This Torrent contains a single tracker. The tracker returns a failure response to any request but includes your IP address as part of the failure reason.
+
+Most BitTorrent clients should allow you to see this message.
+
+QBitTorrent screenshot:
+![alt text](images/screenshot.png)
 
 ## Local development
 

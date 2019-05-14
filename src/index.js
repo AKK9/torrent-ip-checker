@@ -1,36 +1,72 @@
 import 'regenerator-runtime/runtime'
-import bencodeMap from './utils/bencodeMap'
+import { encode as bencode } from 'bencode'
 
-export const handler = async event => {
+const handler = async f => {
   try {
+    return await f()
+  } catch (e) {
+    console.error(e)
+
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'text/html',
+      },
+      body: e.message,
+    }
+  }
+}
+
+export const trackerHandler = async event => {
+  console.log('trackerHandler invoked with event', event)
+
+  return handler(() => {
     const {
       requestContext: {
         identity: { sourceIp },
       },
     } = event
 
-    const body = bencodeMap(
-      new Map([['failure reason', `Your IP address is ${sourceIp}`]])
-    )
+    const responseBuffer = bencode({
+      'failure reason': `Your IP address is ${sourceIp}`,
+    })
 
     return {
-      isBase64Encoded: false,
-      headers: {
-        'Content-Type': 'text/html; charset=utf8',
-      },
       statusCode: 200,
-      body,
+      headers: {
+        'Content-Type': 'text/html',
+      },
+      body: responseBuffer.toString(),
     }
-  } catch (e) {
-    console.error(e)
+  })
+}
+
+export const torrentHandler = async event => {
+  console.log('torrentHandler invoked with event', event)
+
+  return handler(() => {
+    const {
+      headers: { Host: host },
+    } = event
+
+    const torrentBuffer = bencode({
+      announce: `https://${host}/Prod/tracker`,
+      info: {
+        name: 'IP Checker',
+        length: 16000,
+        'piece length': 16000,
+        pieces: new Uint8Array(20).buffer,
+      },
+    })
 
     return {
-      isBase64Encoded: false,
+      isBase64Encoded: true,
+      statusCode: 200,
       headers: {
-        'Content-Type': 'text/html; charset=utf8',
+        'Content-Type': 'application/x-bittorrent',
+        'Content-Disposition': 'attachment; filename=IP Checker.torrent',
       },
-      statusCode: 500,
-      body: e.message,
+      body: torrentBuffer.toString('base64'),
     }
-  }
+  })
 }
