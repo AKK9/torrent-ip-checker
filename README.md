@@ -19,6 +19,8 @@ To update the IP address you just have to reannounce to the tracker. Your BitTor
 **Here's a screenshot from qBittorrent:**
 ![alt text](images/screenshot.png)
 
+---
+
 ## Local development
 
 ### Dependencies
