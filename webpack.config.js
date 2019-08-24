@@ -1,5 +1,5 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const CWD = process.cwd()
 const APP_ENTRY_FILEPATH = path.resolve(CWD, 'src/index.js')
