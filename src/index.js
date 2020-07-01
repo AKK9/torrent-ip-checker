@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime'
 import { encode as bencode } from 'bencode'
 
-const handler = async f => {
+const handler = async (f) => {
   try {
     return await f()
   } catch (e) {
@@ -17,7 +17,7 @@ const handler = async f => {
   }
 }
 
-export const trackerHandler = async event => {
+export const trackerHandler = async (event) => {
   console.log('trackerHandler invoked with event', event)
 
   return handler(() => {
@@ -41,7 +41,7 @@ export const trackerHandler = async event => {
   })
 }
 
-export const torrentHandler = async event => {
+export const torrentHandler = async (event) => {
   console.log('torrentHandler invoked with event', event)
 
   return handler(() => {
@@ -55,7 +55,7 @@ export const torrentHandler = async event => {
         name: 'IP Checker',
         length: 16384,
         'piece length': 16384,
-        pieces: new Uint8Array(20)
+        pieces: new Uint8Array(20),
       },
     })
 
