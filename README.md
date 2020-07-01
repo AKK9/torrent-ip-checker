@@ -2,7 +2,7 @@
 
 A fake Torrent which allows you to see your IP address.
 
-[Download the Torrent here](https://8nhcsz7rj5.execute-api.eu-west-1.amazonaws.com/Prod/torrent)
+[Download the Torrent here](https://7d819jniue.execute-api.eu-west-1.amazonaws.com/Prod/torrent)
 
 ## Overview
 
