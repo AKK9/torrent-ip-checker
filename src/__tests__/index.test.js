@@ -50,8 +50,8 @@ describe('torrentHandler', () => {
     // Decode body and validate
     const buffer = Buffer.from(response.body, 'base64')
     const value = buffer.toString('ascii')
-    expect(value).toBe(
-      'd8:announce32:https://123.abc.com/Prod/tracker4:infod6:lengthi16000e4:name10:IP Checker12:piece lengthi16000e6:piecesdeee'
+    expect(value).toEqual(
+      expect.stringContaining('d8:announce32:https://123.abc.com/prod/tracker4:infod6:lengthi16384e4:name10:IP Checker12:piece lengthi16384e6:pieces20:')
     )
   })
 

@@ -50,12 +50,12 @@ export const torrentHandler = async event => {
     } = event
 
     const torrentBuffer = bencode({
-      announce: `https://${host}/Prod/tracker`,
+      announce: `https://${host}/prod/tracker`,
       info: {
         name: 'IP Checker',
-        length: 16000,
-        'piece length': 16000,
-        pieces: new Uint8Array(20).buffer,
+        length: 16384,
+        'piece length': 16384,
+        pieces: new Uint8Array(20)
       },
     })
 
