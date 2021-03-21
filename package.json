@@ -16,16 +16,16 @@
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^26.1.0",
     "lambda-local": "^1.5.1",
     "prettier": "^2.0.5",
-    "serverless": "^1.42.2",
-    "webpack": "^4.12.2",
-    "webpack-cli": "^3.0.8",
-    "zip-webpack-plugin": "^3.0.0"
+    "serverless": "^2.30.3",
+    "webpack": "^5.27.1",
+    "webpack-cli": "^4.5.0",
+    "zip-webpack-plugin": "^4.0.1"
   },
   "scripts": {
     "build": "webpack",
@@ -36,6 +36,7 @@
     "dev:tracker": "yarn build && serverless invoke local --function tracker --path local/trackerEvent.json --aws-profile serverless",
     "dev:torrent": "yarn build && serverless invoke local --function torrent --path local/torrentEvent.json --aws-profile serverless",
     "lint": "eslint --fix . && serverless package",
+    "precommit": "yarn lint && yarn test && yarn build",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch"
   },
