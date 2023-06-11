@@ -1,16 +1,23 @@
+import type { Context } from 'aws-lambda'
+
 import { trackerHandler, torrentHandler } from '../index'
 
 describe('trackerHandler', () => {
+  const context = {} as Context
+
   it('should return the source ip address bencoded', async () => {
     const event = {
+      headers: {
+        'Content-Type': 'text/html',
+      },
       requestContext: {
-        identity: {
+        http: {
           sourceIp: '12.34.567.890',
         },
       },
     }
 
-    const response = await trackerHandler(event)
+    const response = await trackerHandler(event, context, () => {})
 
     expect(response).toEqual({
       statusCode: 200,
@@ -22,20 +29,25 @@ describe('trackerHandler', () => {
   })
 
   it('should return 500 response if bad event is provided', async () => {
-    const response = await trackerHandler({})
+    const response = await trackerHandler({}, context, () => {})
     expect(response.statusCode).toBe(500)
   })
 })
 
 describe('torrentHandler', () => {
+  const context = {} as Context
+
   it('should return a torrent file', async () => {
     const event = {
       headers: {
-        Host: '123.abc.com',
+        'Content-Type': 'text/html',
+      },
+      requestContext: {
+        domainName: '123.abc.com',
       },
     }
 
-    const response = await torrentHandler(event)
+    const response = await torrentHandler(event, context, () => {})
 
     // Validate response without body
     expect(response).toMatchObject({
@@ -52,13 +64,13 @@ describe('torrentHandler', () => {
     const value = buffer.toString('ascii')
     expect(value).toEqual(
       expect.stringContaining(
-        'd8:announce32:https://123.abc.com/prod/tracker4:infod6:lengthi16384e4:name10:IP Checker12:piece lengthi16384e6:pieces20:'
+        'd8:announce27:https://123.abc.com/tracker4:infod6:lengthi16384e4:name10:IP Checker12:piece lengthi16384e6:pieces20:'
       )
     )
   })
 
   it('should return 500 response if bad event is provided', async () => {
-    const response = await trackerHandler({})
+    const response = await trackerHandler({}, context, () => {})
     expect(response.statusCode).toBe(500)
   })
 })

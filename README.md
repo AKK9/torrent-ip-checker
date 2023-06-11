@@ -2,7 +2,7 @@
 
 A fake Torrent which allows you to see your IP address.
 
-[Download the Torrent here](https://7d819jniue.execute-api.eu-west-1.amazonaws.com/prod/torrent)
+[Download the Torrent here](https://vvdapo30eb.execute-api.eu-west-2.amazonaws.com/torrent)
 
 ## Overview
 
@@ -26,6 +26,7 @@ To update the IP address you just have to reannounce to the tracker. Your BitTor
 ### Dependencies
 
 - Yarn - https://yarnpkg.com/en/docs/install
+- AWS Account bootstrapped with CDK
 
 ### Invoking Lambda locally
 
@@ -33,12 +34,8 @@ First run `yarn`. This will fetch all of the necessary dependencies.
 
 `yarn test` will run the unit tests.
 
-`yarn dev` will execute the Lambda locally using mock data from `local/data.json`. This uses Serverless to execute the Lambda locally using an approximated AWS environment, the result is printed in the console.
-
 ### Deploying
 
-This project uses the [Serverless Framework](https://serverless.com/) to define serverless resources and deploy the Lambda function.
+This project uses the [AWS CDK](https://aws.amazon.com/cdk/) to define a stack and deploy it to AWS.
 
-Use this [Serverless Framework Credentials Guide](https://serverless.com/framework/docs/providers/aws/guide/credentials/) to help you set up AWS credentials. If you need to run `serverless` on the command line install it globally first: `yarn global add serverless`.
-
-Once you've set up credentials run `yarn deploy` to build and deploy the Lambda to your AWS account.
+Use this [Getting Started Guide](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) to help you set up CDK. Once you have credentials and your AWS account is bootstrapped, deploying your own stack is as simple as running `yarn deploy`.
